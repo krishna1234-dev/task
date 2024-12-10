@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="card">
+    <form (ngSubmit)="generateNumber()">
+      <div class="row">
+        <div class="left">
+          <span>Favourite Number :</span>
+        </div>
+        <div class="right">
+          <mat-form-field>
+            <mat-label>Favourite Number</mat-label>
+            <mat-select [(ngModel)]="lastDigit" name="lastDigit" required>
+              @for (digit of digits; track digit) {
+              <mat-option [value]="digit">{{digit}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="left">
+          <span>Number Length :</span>
+        </div>
+        <div class="right">
+          <mat-form-field class="example-full-width">
+            <mat-label>Number Length</mat-label>
+            <input matInput type="number" [(ngModel)]="length" name="length" required min="2" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="submit-button">
+        <button type="submit">SUBMIT</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="output">
+    @if(generatedNumber){
+    <h3>Your number is: {{ generatedNumber }}</h3>
+    }
+  </div>
+</div>
